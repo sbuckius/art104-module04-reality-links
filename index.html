@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reality Technologies - Organized by Type</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f4f1eb;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+        }
+
+        header {
+            background: #1a1a2e;
+            color: #f4f1eb;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212, 163, 115, 0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(100, 149, 180, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3em;
+            margin-bottom: 12px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        header p {
+            font-size: 1em;
+            opacity: 0.7;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        nav {
+            background: #f4f1eb;
+            padding: 18px 40px;
+            border-bottom: 1px solid #e0dbd0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a2e;
+            padding: 7px 18px;
+            border-radius: 2px;
+            background: white;
+            border: 1px solid #d0cac0;
+            transition: all 0.2s ease;
+            font-size: 0.88em;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        nav a:hover {
+            background: #1a1a2e;
+            color: #f4f1eb;
+            border-color: #1a1a2e;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .tech-section {
+            margin-bottom: 70px;
+            padding: 35px;
+            background: #faf9f6;
+            border-radius: 4px;
+            border-top: 4px solid #1a1a2e;
+        }
+
+        .tech-section h2 {
+            font-family: 'DM Serif Display', serif;
+            color: #1a1a2e;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tech-section .description {
+            color: #5a5a6e;
+            font-size: 1em;
+            margin-bottom: 35px;
+            padding: 18px 22px;
+            background: white;
+            border-radius: 2px;
+            border-left: 3px solid #d4a373;
+            line-height: 1.7;
+        }
+
+        .subsection {
+            margin-bottom: 45px;
+        }
+
+        .subsection h3 {
+            color: #1a1a2e;
+            font-size: 1.35em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d0cac0;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .resource-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 20px 22px;
+            border-radius: 2px;
+            border-left: 3px solid #ccc;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resource-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        }
+
+        .articles-subsection {
+            margin-bottom: 35px;
+        }
+
+        .review-tier {
+            margin-bottom: 28px;
+        }
+
+        .review-tier-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding: 10px 16px;
+            border-radius: 2px;
+            font-size: 0.82em;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .tier-peer-reviewed .review-tier-header {
+            background: #e8f4ed;
+            color: #2d6a4f;
+            border-left: 3px solid #2d6a4f;
+        }
+
+        .tier-not-peer-reviewed .review-tier-header {
+            background: #fdf0e0;
+            color: #b5451b;
+            border-left: 3px solid #b5451b;
+        }
+
+        .tier-unknown .review-tier-header {
+            background: #eff3f8;
+            color: #3a5f8a;
+            border-left: 3px solid #3a5f8a;
+        }
+
+        .tier-peer-reviewed .resource-card {
+            border-left-color: #2d6a4f;
+        }
+
+        .tier-not-peer-reviewed .resource-card {
+            border-left-color: #b5451b;
+        }
+
+        .tier-unknown .resource-card {
+            border-left-color: #3a5f8a;
+        }
+
+        .type-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 2px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .badge-wiki { background: #e8f0fd; color: #1a56c4; }
+        .badge-artwork { background: #fce8f0; color: #a01f5e; }
+        .badge-article { background: #f0e8fc; color: #6b1fa2; }
+        .badge-hardware { background: #e8f5ec; color: #2d6a4f; }
+        .badge-peer { background: #e8f4ed; color: #2d6a4f; }
+        .badge-notpeer { background: #fdf0e0; color: #b5451b; }
+        .badge-unknown { background: #eff3f8; color: #3a5f8a; }
+
+        .resource-card h4 {
+            color: #1a1a2e;
+            font-size: 1.05em;
+            margin-bottom: 6px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .resource-card .artist {
+            color: #7a7a8e;
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.92em;
+        }
+
+        .resource-card p {
+            color: #5a5a6e;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            font-size: 0.93em;
+        }
+
+        .resource-card .source-label {
+            font-size: 0.78em;
+            color: #9a9aae;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 10px;
+        }
+
+        .resource-links a {
+            background: #1a1a2e;
+            color: #f4f1eb;
+            padding: 5px 13px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-size: 0.8em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            letter-spacing: 0.2px;
+        }
+
+        .resource-links a:hover {
+            background: #d4a373;
+            color: #1a1a2e;
+        }
+
+        .themes-box {
+            background: #1a1a2e;
+            color: #f4f1eb;
+            padding: 35px;
+            border-radius: 4px;
+            margin-bottom: 50px;
+        }
+
+        .themes-box h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: #d4a373;
+        }
+
+        .themes-box p {
+            line-height: 1.9;
+            font-size: 0.97em;
+            opacity: 0.85;
+        }
+
+        .themes-box a {
+            color: #d4a373;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #f4f1eb;
+            padding: 35px;
+            text-align: center;
+        }
+
+        footer p { opacity: 0.7; font-size: 0.9em; line-height: 2; }
+        footer a { color: #d4a373; text-decoration: none; }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e0dbd0;
+            align-items: center;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            font-size: 0.88em;
+            color: #5a5a6e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.87em;
+            color: #3a3a5e;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .dot-peer { background: #2d6a4f; }
+        .dot-notpeer { background: #b5451b; }
+        .dot-unknown { background: #3a5f8a; }
+
+        .conceptual-section {
+            margin-bottom: 70px;
+            padding: 35px;
+            background: #faf9f6;
+            border-radius: 4px;
+            border-top: 4px solid #5a3e8a;
+        }
+
+        .conceptual-section h2 {
+            font-family: 'DM Serif Display', serif;
+            color: #1a1a2e;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .conceptual-section .description {
+            color: #5a5a6e;
+            font-size: 1em;
+            margin-bottom: 35px;
+            padding: 18px 22px;
+            background: white;
+            border-radius: 2px;
+            border-left: 3px solid #8a6abf;
+            line-height: 1.7;
+        }
+
+        .conceptual-section .subsection h3 {
+            color: #5a3e8a;
+        }
+
+        .conceptual-section .tier-peer-reviewed .resource-card {
+            border-left-color: #2d6a4f;
+        }
+
+        .conceptual-section .tier-not-peer-reviewed .resource-card {
+            border-left-color: #b5451b;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2em; }
+            .content { padding: 25px 20px; }
+            .tech-section, .conceptual-section { padding: 22px; }
+            nav { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Reality Technologies</h1>
+            <p>Explore VR, AR, MR, Simulations, Video Games & More</p>
+            <p style="margin-top:8px;">Sarah gathered the links but AI compiled the page, so there could be errors</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#vr">Virtual Reality</a></li>
+                <li><a href="#ar">Augmented Reality</a></li>
+                <li><a href="#mr">Mixed Reality</a></li>
+                <li><a href="#games">Video Games</a></li>
+                <li><a href="#simulations">Simulations</a></li>
+                <li><a href="#immersive">Immersive Tech</a></li>
+                <li><a href="#conceptual">Conceptual Themes</a></li>
+                <li><a href="#themes">Key Themes</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+
+            <div class="legend">
+                <span class="legend-title">Article categories:</span>
+                <span class="legend-item"><span class="legend-dot dot-peer"></span> Peer Reviewed</span>
+                <span class="legend-item"><span class="legend-dot dot-notpeer"></span> Not Peer Reviewed</span>
+                <span class="legend-item"><span class="legend-dot dot-unknown"></span> Peer Review Status Uncertain</span>
+            </div>
+
+            <!-- Themes Section -->
+            <div class="themes-box" id="themes">
+                <h3>Research Themes & Topics</h3>
+                <p>
+                    <strong>Core Areas:</strong> Privacy · Surveillance · Augmented Reality · Mixed Reality · Virtual Reality · Surrealism · Real Time Systems · Real-Time Virtual/Real Space · Fiction/Non-fiction · Video Games · Physical Computing · Quantum Mechanics · Digital Simulations · Social Construction of Reality · Mediated Reality · Technological Sublime · Simulacra · AI & Reality
+                </p>
+                <p style="margin-top: 15px;">
+                    <strong>Conceptual Themes:</strong> Reality & Simulation · Identity & Self · Time & Temporality · Agency & Control · Place & Space / Blending & Hybridity · Empathy & Perspective-Taking · Power, Surveillance & Ethics · Death, Absence & Memory · Performance & Spectatorship
+                </p>
+                <p style="margin-top: 15px;">
+                    📖 <strong>Reference Book:</strong> <a href="https://books.google.com/books?id=46K7EAAAQBAJ&printsec=frontcover#v=onepage&q&f=false">Digital Art - Google Books</a>
+                </p>
+            </div>
+
+            <!-- ===================== VIRTUAL REALITY ===================== -->
+            <div class="tech-section" id="vr">
+                <h2><span>🥽</span> Virtual Reality (VR)</h2>
+                <div class="description">
+                    Fully immersive digital environments that create a complete sense of presence in computer-generated worlds. VR replaces the physical world with a simulated one through head-mounted displays and other immersive technologies.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core VR Concepts & Technologies</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card">
+                            <span class="type-badge badge-wiki">Wikipedia</span>
+                            <h4>Virtual Reality (VR)</h4>
+                            <p>Fully immersive digital environments</p>
+                            <div class="resource-links"><a href="https://en.wikipedia.org/wiki/Virtual_reality" target="_blank">Wikipedia →</a></div>
+                        </div>
+                        <div class="resource-card">
+                            <span class="type-badge badge-wiki">Wikipedia</span>
+                            <h4>Immersion (Virtual Reality)</h4>
+                            <p>Sense of "being there" in a virtual world</p>
+                            <div class="resource-links"><a href="https://en.wikipedia.org/wiki/Immersion_%28virtual_reality%29" target="_blank">Wikipedia →</a></div>
+                        </div>
+                        <div class="resource-card">
+                            <span class="type-badge badge-wiki">Wikipedia</span>
+                            <h4>Cinematic Virtual Reality</h4>
+                            <p>Narrative immersive 360 video experiences</p>
+                            <div class="resource-links"><a href="https://en.wikipedia.org/wiki/Cinematic_virtual_reality" target="_blank">Wikipedia →</a></div>
+                        </div>
+                        <div class="resource-card">
+                            <span class="type-badge badge-wiki">Wikipedia</span>
+                            <h4>360-Degree Video</h4>
+                            <p>Immersive spherical video recordings</p>
+                            <div class="resource-links"><a href="https://en.wikipedia.org/wiki/360-degree_video" target="_blank">Wikipedia →</a></div>
+                        </div>
+                        <div class="resource-card">
+                            <span class="type-badge badge-wiki">Wikipedia</span>
+                            <h4>CAVE (Cave Automatic Virtual Environment)</h4>
+                            <p>Room-scale immersive environment</p>
+                            <div class="resource-links"><a href="https://en.wikipedia.org/wiki/Cave_automatic_virtual_environment" target="_blank">Wikipedia →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎧 VR Hardware & Headsets</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Meta Quest Line</h4><p>Line of standalone VR headsets (formerly Oculus Quest)</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Meta_Quest" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Meta Quest Pro</h4><p>High-end mixed reality/VR headset by Meta</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Meta_Quest_Pro" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Meta Quest 2</h4><p>Popular standalone VR headset by Meta</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Quest_2" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Oculus Go</h4><p>Early standalone VR headset in Meta's ecosystem</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Oculus_Go" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>PlayStation VR (PS VR)</h4><p>Sony's virtual reality system for PlayStation consoles</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/PlayStation_VR" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Steam Frame</h4><p>Upcoming dedicated VR headset from Valve</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Steam_Frame" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Samsung Gear VR</h4><p>Mobile VR headset using Samsung smartphones</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Samsung_Gear_VR" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎨 VR Artworks & Installations</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Osmose</h4><p class="artist">Charlotte Davies</p><div class="resource-links"><a href="https://www.immersence.com/osmose/" target="_blank">Immersence</a><a href="http://www.medienkunstnetz.de/works/osmose/" target="_blank">Media Art Net</a><a href="https://www.fondation-langlois.org/html/e/page.php?NumPage=103" target="_blank">Fondation Langlois</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Memory Theater VR</h4><p class="artist">Agnes Hegedus</p><div class="resource-links"><a href="http://www.medienkunstnetz.de/works/memory-theater-vr/" target="_blank">Media Art Net</a><a href="https://widok5.wrocenter.pl/en/hegedus/" target="_blank">Wrocenter</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>ConFIGURING the CAVE</h4><p class="artist">Agnes Hegedus, Bernd Lintermann, Jeffrey Shaw</p><div class="resource-links"><a href="https://www.ntticc.or.jp/en/archive/works/configuring-the-cave/" target="_blank">NTT ICC</a><a href="https://artsandculture.google.com/asset/configuring-the-cave-an-immersive-installation-for-the-cave-jeffrey-shaw/rQGkBDQp5FmhcA?hl=en" target="_blank">Google Arts</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Beyond Manzanar</h4><p class="artist">Tamiko Thiel, Zara Houshmand</p><div class="resource-links"><a href="https://zarahoushmand.com/beyond-manzanar/" target="_blank">Zara Houshmand</a><a href="https://sjmusart.org/event/creative-minds-tamiko-thiel-and-zara-houshmand-susan-hayase" target="_blank">SJMA</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Recreational Vehicle in Virtual Reality</h4><p class="artist">Peter D'Agostino</p><div class="resource-links"><a href="https://www.eai.org/titles/vr-rv-a-recreational-vehicle-in-virtual-reality" target="_blank">EAI</a><a href="http://peterdagostino.com/VRRV.html" target="_blank">Peter D'Agostino</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>AQUAPHOBIA, RE-ANIMATED</h4><p class="artist">Jakob Kudsk Steensen</p><div class="resource-links"><a href="http://www.jakobsteensen.com/re-animated" target="_blank">Re-Animated</a><a href="https://kadist.org/work/re-animated/" target="_blank">Kadist</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Bodyless</h4><p class="artist">Hsin-Chien Huang</p><div class="resource-links"><a href="https://hsinchienhuang.com/pix/_3artworks/i_bodyless/p0.php?lang=en" target="_blank">Artist Site</a><a href="https://www.labiennale.org/en/cinema/2019/venice-virtual-reality/bodyless" target="_blank">Venice Biennale</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>The Sky is a Gap</h4><p class="artist">Rachel Rossin</p><div class="resource-links"><a href="https://www.daffylondon.com/portfolio/rachel-rossin-the-sky-is-a-gap-w-expl" target="_blank">Daffy London</a><a href="https://www.artforum.com/features/rachel-rossin-236231/" target="_blank">Artforum</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 VR Research & Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>How Virtual Reality Technology Has Changed Our Lives</h4>
+                                <p class="source-label">PMC / National Institutes of Health</p>
+                                <div class="resource-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9517547/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Paradox of Interactive Media: VR as Tools for Violence Prevention</h4>
+                                <p class="source-label">Frontiers in Communication</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2020.580965/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>VR Games and Body Involvement in Enhancing Positive Emotions</h4>
+                                <p class="source-label">JMIR Serious Games</p>
+                                <div class="resource-links"><a href="https://games.jmir.org/2020/2/e15635/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Immersive Virtual Reality for Digital Media Making: Transmediation is Key</h4>
+                                <p class="source-label">Learning, Media and Technology (Taylor & Francis)</p>
+                                <div class="resource-links"><a href="https://www.tandfonline.com/doi/full/10.1080/17439884.2021.1952428#abstract" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Impact of VR Technology on Digital Media (Big Data & AI Context)</h4>
+                                <p class="source-label">ACM Digital Library</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.3233/JCM-226611" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Tracing Physical Behavior in Virtual Reality (Social Psychology)</h4>
+                                <p class="source-label">Journal of Experimental Social Psychology (ScienceDirect)</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0022103119300332" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Coextensive Space: VR and the Body-Digital-Physical Relationship</h4>
+                                <p class="source-label">Media, Culture & Society (SAGE Journals)</p>
+                                <div class="resource-links"><a href="https://journals.sagepub.com/doi/full/10.1177/0163443720932498" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Where VR Gaming Took a Wrong Turn</h4>
+                                <p class="source-label">IEEE Spectrum (trade magazine)</p>
+                                <div class="resource-links"><a href="https://spectrum.ieee.org/vr-games" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Virtual Villages Helping Digital Nomads Find Real-World Friends</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/virtual-villages-for-digital-nomads/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Metaverse Was Supposed to Be Your New Office. You're Still on Zoom</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/metaverse-virtual-reality-office-work-slow-growth/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-unknown">
+                        <div class="review-tier-header">? Peer Review Status Uncertain</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Virtual Venice: Immersive Media and the Preservation of Historical Experience</h4>
+                                <p class="source-label">DAHJ — Digital Art History Journal (peer-review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://dahj.org/article/virtual-venice" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Contemporary Art and Virtual Reality: New Conditions of Viewership</h4>
+                                <p class="source-label">Cinergie – Il Cinema e le altre Arti (Italian journal, peer-review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://cinergie.unibo.it/article/view/12322/13022" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== AUGMENTED REALITY ===================== -->
+            <div class="tech-section" id="ar">
+                <h2><span>📱</span> Augmented Reality (AR)</h2>
+                <div class="description">
+                    Technology that overlays virtual content onto the real world, enhancing physical environments with digital information, objects, and interactive elements visible through devices like smartphones, tablets, or AR glasses.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core AR Concepts</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Augmented Reality (AR)</h4><p>Overlays virtual content onto the real world</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Augmented_reality" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Projection Mapping</h4><p>Project visuals onto physical objects & environments</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Projection_mapping" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎨 AR Artworks & Installations</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>SFMOMA AR Expansion</h4><p class="artist">Will Pappenheimer, John Craig Freeman</p><div class="resource-links"><a href="http://www.willpap-projects.com/SFMOMA_AR/SFMOMA_AR.html" target="_blank">Will Pap Projects</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Shades of Absence</h4><p class="artist">Tamiko Thiel</p><div class="resource-links"><a href="https://tamikothiel.com/AR/shades-of-absence.html" target="_blank">Shades of Absence</a><a href="https://arts.mit.edu/tamiko-thiel/" target="_blank">MIT Arts</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Border Memorial: Frontera de los Muertos</h4><p class="artist">John Craig Freeman, Mark Skwarek</p><div class="resource-links"><a href="https://www.google.com/books/edition/Digital_Art_Fourth_World_of_Art/hEy6EAAAQBAJ?hl=en&gbpv=1&dq=John+Craig+Freeman,+Mark+Skwarek%09Border+Memorial:+Frontera+de+los+Muertos&pg=PA96&printsec=frontcover" target="_blank">Digital Art Book</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Liberty Bell</h4><p class="artist">Nancy Baker Cahill</p><div class="resource-links"><a href="https://nancybakercahill.com/work/liberty-bell-3" target="_blank">Liberty Bell</a><a href="https://www.associationforpublicart.org/project/nancy-baker-cahill-liberty-bell/" target="_blank">Association for Public Art</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Margin of Error</h4><p class="artist">Nancy Baker Cahill</p><div class="resource-links"><a href="https://nancybakercahill.com/work/margin-of-error-vr-2" target="_blank">Margin of Error</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Trade Eden</h4><p class="artist">Cao Fei</p><div class="resource-links"><a href="http://www.caofei.com/works.aspx?wtid=2" target="_blank">Cao Fei Works</a><a href="https://www.guggenheim.org/teaching-materials/teaching-modern-and-contemporary-asian-art/cao-fei-%E6%9B%B9-%E6%96%90" target="_blank">Guggenheim</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Orators, Rostrums, and Propaganda Stands</h4><p class="artist">John Craig Freeman</p><div class="resource-links"><a href="https://johncraigfreeman.wordpress.com/orators/" target="_blank">John Craig Freeman</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 AR Research & Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Bridging the Digital and Physical: The Psychology of Augmented Reality</h4>
+                                <p class="source-label">Current Opinion in Psychology (ScienceDirect)</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/pii/S2352250X24000551" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Social Interaction in Augmented Reality</h4>
+                                <p class="source-label">PLOS ONE</p>
+                                <div class="resource-links"><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0216290" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Application of Augmented Reality in Print Media</h4>
+                                <p class="source-label">Journal of Print and Media Technology Research</p>
+                                <div class="resource-links"><a href="https://jpmtr.net/index.php/journal/article/view/65" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Augmented and Mixed Reality for Communities</h4>
+                                <p class="source-label">Taylor & Francis (book chapter)</p>
+                                <div class="resource-links"><a href="https://api.taylorfrancis.com/content/books/mono/download?identifierName=doi&identifierValue=10.1201/9781003052838&type=googlepdf" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Spatial Augmented Reality Storytelling in Arts and Culture: A Critical Review</h4>
+                                <p class="source-label">MDPI Heritage (2026)</p>
+                                <div class="resource-links"><a href="https://www.mdpi.com/2571-9408/9/1/20" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Augmented Reality Interventions in Shared Space: Subversion and Social Impact</h4>
+                                <p class="source-label">Springer — Augmented Reality Art (2022)</p>
+                                <div class="resource-links"><a href="https://link.springer.com/chapter/10.1007/978-3-030-96863-2_11" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Investigating the Design of Augmented Narrative Spaces Through Virtual-Real Connections</h4>
+                                <p class="source-label">ACM CHI (2024)</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.1145/3613904.3642819" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Augmented Reality in Cultural Heritage: A Narrative Review of Design, Development and Evaluation</h4>
+                                <p class="source-label">MDPI Heritage (2025)</p>
+                                <div class="resource-links"><a href="https://www.mdpi.com/2571-9408/8/10/421" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>An AR Program Can Help Patients Overcome Parkinson's Symptoms</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/lining-up-tech-to-help-banish-tremors-strolll-parkinsons/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Digital Dualism versus Augmented Reality</h4>
+                                <p class="source-label">Nathan Jurgenson — Cyborgology (2011)</p>
+                                <div class="resource-links"><a href="https://thesocietypages.org/cyborgology/2011/02/24/digital-dualism-versus-augmented-reality/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-unknown">
+                        <div class="review-tier-header">? Peer Review Status Uncertain</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Historical APPistemology: AR Apps as a Creative Tool</h4>
+                                <p class="source-label">DAHJ — Digital Art History Journal (peer-review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://dahj.org/article/historical-appistemology" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Representing Early Modern Venice: AR Experiences in Exhibitions</h4>
+                                <p class="source-label">DAHJ — Digital Art History Journal (peer-review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://dahj.org/article/representing-early-modern-venice" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== MIXED REALITY ===================== -->
+            <div class="tech-section" id="mr">
+                <h2><span>🔮</span> Mixed Reality (MR) & Extended Reality (XR)</h2>
+                <div class="description">
+                    The blending of physical and digital worlds where real and virtual objects co-exist and interact in real-time. XR is the umbrella term encompassing VR, AR, and MR technologies along the reality-virtuality continuum.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core MR/XR Concepts</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Extended Reality (XR)</h4><p>Umbrella term for VR, AR, MR and related tech</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Extended_reality" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Mixed Reality (MR)</h4><p>Blends real and virtual elements</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Reality%E2%80%93virtuality_continuum" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Reality-Virtuality Continuum</h4><p>Framework showing the spectrum between physical reality and virtuality</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Reality%E2%80%93virtuality_continuum" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Metaverse</h4><p>Shared virtual spaces using AR/VR</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Metaverse" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎧 MR Hardware & Headsets</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Apple Vision Pro</h4><p>Mixed reality spatial computing headset from Apple</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Apple_Vision_Pro" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>Microsoft HoloLens</h4><p>Augmented/mixed reality headset from Microsoft (enterprise focused)</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Microsoft_HoloLens" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-hardware">Hardware</span><h4>HoloLens 2</h4><p>Second-generation MR headset, successor to HoloLens</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/HoloLens_2" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎨 MR/XR Artworks</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Alice Unchained XR</h4><p class="artist">Claudia Hart</p><div class="resource-links"><a href="https://claudiahart.com/Alice-Unchained-XR-2018" target="_blank">Alice Unchained 2018</a><a href="https://claudiahart.com/Alice-XR-2019" target="_blank">Alice XR 2019</a><a href="https://bitforms.art/artwork/alice-unchained/" target="_blank">Bitforms</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Global Interior Project</h4><p class="artist">Masaki Fujihata</p><div class="resource-links"><a href="https://digitalartarchive.siggraph.org/artwork/masaki-fujihata-global-interior-project-networked-multi-user-virtual-environment-project/" target="_blank">SIGGRAPH</a><a href="https://v2.nl/works/global-interior-project" target="_blank">V2</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 MR/XR Research & Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A Concise Analysis of VR and AR Technology Impact on Digital Media Art</h4>
+                                <p class="source-label">American Journal of Art and Design (Science Publishing Group)</p>
+                                <div class="resource-links"><a href="https://www.sciencepublishinggroup.com/article/10.11648/j.ajad.20220704.17" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>(Semi-)Immersive Digital Placemaking: A Systematic Review of AR, VR, and MR in Placemaking</h4>
+                                <p class="source-label">Sage Journals (2025)</p>
+                                <div class="resource-links"><a href="https://journals.sagepub.com/doi/10.1177/13548565251372796" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Public Perceptions on Psychological and Social Impacts of VR and AR</h4>
+                                <p class="source-label">ACM Mensch und Computer (2025)</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.1145/3743049.3743079" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Metaverse Technologies and Human Behavior: Insights into Engagement, Adoption, and Ethical Challenges</h4>
+                                <p class="source-label">ScienceDirect (2025)</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/pii/S2451958825001277" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Ethics in the Metaverse (Editorial)</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2025)</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2025.1576244/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Replika in the Metaverse: The Moral Problem with Empathy in 'It from Bit'</h4>
+                                <p class="source-label">AI and Ethics, Springer (2022)</p>
+                                <div class="resource-links"><a href="https://link.springer.com/article/10.1007/s43681-022-00252-7" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Mixed Reality: The Interface of the Future</h4>
+                                <p class="source-label">arXiv preprint (not yet peer reviewed)</p>
+                                <div class="resource-links"><a href="https://arxiv.org/pdf/2309.00819" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-unknown">
+                        <div class="review-tier-header">? Peer Review Status Uncertain</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Seeing the World Through Digital Prisms: Psychological Implications of Passthrough Video</h4>
+                                <p class="source-label">PubPub (open publishing platform — peer review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://assets.pubpub.org/gb3z210x/tmb_tmb0000129-51719250557409.pdf" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== VIDEO GAMES ===================== -->
+            <div class="tech-section" id="games">
+                <h2><span>🎮</span> Video Games & Interactive Experiences</h2>
+                <div class="description">
+                    Interactive digital entertainment and art forms that engage players in virtual worlds through gameplay mechanics, narratives, and immersive experiences. Includes traditional games, art games, and alternate reality experiences.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core Gaming Concepts</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Video Game</h4><p>Interactive digital games (2D, 3D, VR)</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Video_game" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Simulation Video Game</h4><p>Games that mimic real-world systems</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Simulation_video_game" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Alternate Reality Game (ARG)</h4><p>Real-world based narrative game experience</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Alternate_reality_game" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Transreality Game</h4><p>Blends real and virtual game elements</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Transreality_game" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Game Engine</h4><p>Software framework for building interactive worlds</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Video_game_engine" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Unity (Game Engine)</h4><p>Real-time engine for AR/VR game & simulation development</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Unity_%28game_engine%29" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Unreal Engine</h4><p>High-fidelity interactive 3D engine for games and simulations</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Unreal_Engine" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎨 Game-Based Artworks</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>The Intruder</h4><p class="artist">Natalie Bookchin</p><div class="resource-links"><a href="https://bookchin.net/projects/the-intruder/" target="_blank">Bookchin Projects</a><a href="https://www.gamescenes.org/2011/10/art-game-natalie-bookchin-joncates-the-intruder-1999.html" target="_blank">Game Scenes</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Metapet</h4><p class="artist">Natalie Bookchin</p><div class="resource-links"><a href="https://bookchin.net/projects/metapet/" target="_blank">Bookchin Projects</a><a href="https://creativetime.org/programs/archive/2003/MetaPet/metapet/" target="_blank">Creative Time</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Super Mario Clouds</h4><p class="artist">Cory Arcangel</p><div class="resource-links"><a href="https://whitney.org/collection/works/20588" target="_blank">Whitney</a><a href="https://coryarcangel.com/things-i-made/2002-001-super-mario-clouds" target="_blank">Cory Arcangel</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>SOD</h4><p class="artist">JODI</p><div class="resource-links"><a href="https://sod.jodi.org/" target="_blank">SOD</a><a href="https://www.ntticc.or.jp/en/archive/works/sod/" target="_blank">NTT ICC</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Q4U (Quake for You)</h4><p class="artist">Feng Mengbo</p><div class="resource-links"><a href="https://renaissancesociety.org/exhibitions/428/feng-mengbo-q4u/" target="_blank">Renaissance Society</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Velvet-Strike</h4><p class="artist">Anne-Marie Schleiner, Joan Leandre, Brody Condon</p><div class="resource-links"><a href="https://anthology.rhizome.org/velvet-strike" target="_blank">Rhizome</a><a href="https://brody.work/project/velvet-strike/" target="_blank">Brody Work</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Walden, a game</h4><p class="artist">Tracy Fullerton</p><div class="resource-links"><a href="https://www.tracyfullerton.com/projects#/walden/" target="_blank">Tracy Fullerton</a><a href="https://www.waldengame.com/" target="_blank">Walden Game</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Everything</h4><p class="artist">David OReilly</p><div class="resource-links"><a href="https://www.davidoreilly.com/" target="_blank">David OReilly</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Can You See Me Now</h4><p class="artist">Blast Theory</p><div class="resource-links"><a href="https://www.blasttheory.co.uk/projects/can-you-see-me-now/" target="_blank">Blast Theory</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 Video Game Research & Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Video Games as Awareness Raisers, Attitude Changers, and Agents of Social Change</h4>
+                                <p class="source-label">Wiley Online Library</p>
+                                <div class="resource-links"><a href="https://onlinelibrary.wiley.com/doi/10.1155/2024/3274715" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Future of Video Games Is ... Reality TV?</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/the-future-of-video-games-is-reality-tv/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>SimCity Isn't a Model of Reality. It's a Libertarian Toy Land</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/simcity-libertarian-toy-land/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-unknown">
+                        <div class="review-tier-header">? Peer Review Status Uncertain</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Video Games and the Technological Sublime</h4>
+                                <p class="source-label">Tate Papers (museum research journal — peer-review status unconfirmed)</p>
+                                <div class="resource-links"><a href="https://www.tate.org.uk/research/tate-papers/14/video-games-and-the-technological-sublime" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== SIMULATIONS ===================== -->
+            <div class="tech-section" id="simulations">
+                <h2><span>⚙️</span> Simulations & Digital Twins</h2>
+                <div class="description">
+                    Computer-generated models that replicate real-world systems, processes, or environments for training, analysis, prediction, and understanding complex phenomena across science, medicine, engineering, and beyond.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core Simulation Concepts</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Simulator (General Concept)</h4><p>Device that mimics real systems or processes</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Simulator" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Digital Twin</h4><p>Virtual copy of a real system, used for simulation</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Digital_twin" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Physics Simulation</h4><p>Computer modeling of physical systems</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Physical_simulation" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Scientific Simulation</h4><p>Simulating complex scientific processes</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Scientific_simulation" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Simulation Hypothesis</h4><p>Philosophical idea that reality may be a simulation</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Simulation_hypothesis" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎯 Specialized Simulators</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Flight Simulator</h4><p>Training systems simulating aircraft control</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Flight_simulator" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Driving Simulator</h4><p>Realistic driving environment simulation</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Driving_simulator" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Medical Simulation</h4><p>Simulated clinical environments for healthcare training</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Medical_simulation" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 Simulation Research & Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Construction of Interactive VR Simulation Digital Media System</h4>
+                                <p class="source-label">PMC / National Institutes of Health</p>
+                                <div class="resource-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9410964/#sec6" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Simulacra in the Age of Social Media: Baudrillard as the Prophet of Fake News</h4>
+                                <p class="source-label">Journalism & Mass Communication Quarterly (SAGE Journals)</p>
+                                <div class="resource-links"><a href="https://journals.sagepub.com/doi/10.1177/0196859920977154" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Digital Simulations Open Up Real-World Possibilities</h4>
+                                <p class="source-label">MIT Technology Review</p>
+                                <div class="resource-links"><a href="https://www.technologyreview.com/2023/04/04/1070684/digital-simulations-open-up-real-world-possibilities/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The New Era of Simulation</h4>
+                                <p class="source-label">UCF Pegasus Magazine</p>
+                                <div class="resource-links"><a href="https://www.ucf.edu/pegasus/the-new-era-of-simulation/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== IMMERSIVE TECH ===================== -->
+            <div class="tech-section" id="immersive">
+                <h2><span>🌊</span> Immersive Technologies & Environments</h2>
+                <div class="description">
+                    Technologies and techniques that create deeply engaging sensory experiences, including haptics, telepresence, holography, and spatial computing that blur the boundaries between physical and digital realms.
+                </div>
+
+                <div class="subsection">
+                    <h3>📘 Core Immersive Concepts</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Haptic Technology</h4><p>Technology for tactile feedback</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Haptic_technology" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Haptic Suit</h4><p>Wearable device providing bodily feedback</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Haptic_suit" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Telepresence</h4><p>Experience of remote presence via technology</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Telepresence" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Holography</h4><p>3D image capture and display technique</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Holography" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>Microsoft Holoportation</h4><p>Real-time 3D telepresence capture technology</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/Microsoft_Holoportation" target="_blank">Wikipedia →</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-wiki">Wikipedia</span><h4>On-Set Virtual Production</h4><p>Real-time LED + game engine tech for filmmaking</p><div class="resource-links"><a href="https://en.wikipedia.org/wiki/On-set_virtual_production" target="_blank">Wikipedia →</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🎨 Immersive Artworks & Installations</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>The Golden Calf</h4><p class="artist">Jeffrey Shaw</p><div class="resource-links"><a href="https://www.jeffreyshawcompendium.com/portfolio/golden-calf/" target="_blank">Jeffrey Shaw Compendium</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>The World Generator/The Engine of Desire</h4><p class="artist">Bill Seaman & Gideon May</p><div class="resource-links"><a href="https://billseaman.com/works/1997_world_generator.html" target="_blank">Bill Seaman</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Be Now Here</h4><p class="artist">Michael Naimark</p><div class="resource-links"><a href="http://www.naimark.net/projects/benowhere.html" target="_blank">Naimark Projects</a><a href="http://www.medienkunstnetz.de/works/be-now-here/" target="_blank">Media Art Net</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Place: A User's Manual</h4><p class="artist">Jeffrey Shaw</p><div class="resource-links"><a href="https://www.jeffreyshawcompendium.com/portfolio/place-a-users-manual/" target="_blank">Jeffrey Shaw Compendium</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Hallucination</h4><p class="artist">Jim Campbell</p><div class="resource-links"><a href="http://www.jimcampbell.tv/portfolio/installations/hallucination/" target="_blank">Hallucination</a><a href="https://www.jimcampbell.tv/portfolio/installations/interactive_hallucination/" target="_blank">Interactive Hallucination</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>EVE</h4><p class="artist">Jeffrey Shaw</p><div class="resource-links"><a href="https://www.jeffreyshawcompendium.com/platform/eve/" target="_blank">Jeffrey Shaw Compendium</a><a href="http://www.medienkunstnetz.de/works/eve/" target="_blank">Media Art Net</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Ecosystem2</h4><p class="artist">John Klima</p><div class="resource-links"><a href="http://www.cityarts.com/lmno/ecosystm.html" target="_blank">City Arts</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🌐 Network & Digital Space Artworks</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>10_DENCIES</h4><p class="artist">Knowbotic Research</p><div class="resource-links"><a href="http://krcf.knowbotiq.net/IODENS_SAOPAULO/1IOdencies.htm" target="_blank">Project Site</a><a href="http://www.medienkunstnetz.de/works/io-dencies/" target="_blank">Media Art Net</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Empire 24/7</h4><p class="artist">Wolfgang Staehle</p><div class="resource-links"><a href="https://v2.nl/works/empire-24-7" target="_blank">V2 Works</a><a href="http://www.medienkunstnetz.de/works/empire24-7/" target="_blank">Media Art Net</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Discrete Packets</h4><p class="artist">Nick Crowe</p><div class="resource-links"><a href="https://www.nickcrowe.net/works/discretepackets/discretepackets_3.html" target="_blank">Nick Crowe</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>CNN Interactive Just Got More Interactive</h4><p class="artist">Thomson & Craighead</p><div class="resource-links"><a href="https://www.thomson-craighead.net/cnndoc.html" target="_blank">Thomson & Craighead</a><a href="https://v2.nl/works/cnn-interactive-just-got-more-interactive" target="_blank">V2</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>alpha 3.4</h4><p class="artist">tsunamii.net</p><div class="resource-links"><a href="https://anthology.rhizome.org/alpha-3-4" target="_blank">Rhizome</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>FlatEarth.io</h4><p class="artist">Tabor Robak</p><div class="resource-links"><a href="https://www.taborrobak.com/flatearth#" target="_blank">Tabor Robak</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>My Boyfriend Came Back from the War</h4><p class="artist">Olia Lialina</p><div class="resource-links"><a href="https://sites.rhizome.org/anthology/lialina.html" target="_blank">Rhizome</a><a href="http://www.teleportacia.org/war/" target="_blank">Teleportacia</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Citizen Ex</h4><p class="artist">James Bridle</p><div class="resource-links"><a href="https://jamesbridle.com/works/citizen-ex" target="_blank">James Bridle</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Naked On Pluto</h4><p class="artist">Dave Griffiths, Aymeric Mansoux, Marloes de Valk</p><div class="resource-links"><a href="https://www.fact.co.uk/artwork/naked-on-pluto-2010" target="_blank">FACT</a><a href="https://monoskop.org/Naked_on_Pluto" target="_blank">Monoskop</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>🏝️ Virtual Worlds & Second Life Artworks</h3>
+                    <div class="resource-grid">
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>AVATARA</h4><p class="artist">Donato Mancini, Jeremy Owen Turner</p><div class="resource-links"><a href="https://www.intelligentagent.com/archive/IA3_2vrpaul.pdf" target="_blank">Intelligent Agent</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>13 Most Beautiful Avatars</h4><p class="artist">Eva and Franco Mattes, 010010111</p><div class="resource-links"><a href="https://0100101110101101.org/show-13-most-beautiful-avatars/" target="_blank">0100101110101101</a><a href="https://rhizome.org/editorial/2006/dec/01/13-most-beautiful-avatars/" target="_blank">Rhizome</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>VF-VirtaFlaneurazine-SL</h4><p class="artist">John Craig Freeman</p><div class="resource-links"><a href="https://www.fringexhibitions.com/sept08b_2.html" target="_blank">Fringe Exhibitions</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Flack Attack</h4><p class="artist">G+S (Simon Goldin and Jakob Senneby)</p><div class="resource-links"><a href="https://goldinsenneby.com/practice/flack-attack/" target="_blank">Goldin + Senneby</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Second Life Dumpster</h4><p class="artist">eteam (Hajoe Moderegger, Franziska Lamprecht)</p><div class="resource-links"><a href="https://www.meineigenheim.org/portfolio/?p=106" target="_blank">Mein Eigenheim</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Reenactments</h4><p class="artist">Eva and Franco Mattes, 010010111</p><div class="resource-links"><a href="https://0100101110101101.org/reenactment-of-gilbertgeorges-the-singing-sculpture/" target="_blank">Singing Sculpture</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Spawn of the Surreal</h4><p class="artist">Second Front</p><div class="resource-links"><a href="https://www.secondfront.org/Performances/Spawn_Surreal.html" target="_blank">Second Front</a></div></div>
+                        <div class="resource-card"><span class="type-badge badge-artwork">Artwork</span><h4>Imagining Place SL: The U.S./Mexico Border</h4><p class="artist">John Craig Freeman</p><div class="resource-links"><a href="https://johncraigfreeman.wordpress.com/imaging-place/imaging-the-u-s-mexico-border/" target="_blank">Imaging Border</a><a href="http://www.rhizomes.net/issue18/freeman/index.html" target="_blank">Rhizomes</a></div></div>
+                    </div>
+                </div>
+
+                <div class="subsection articles-subsection">
+                    <h3>📄 Digital Media & Reality Articles</h3>
+
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Media and the Social Construction of Reality</h4>
+                                <p class="source-label">Google Books — academic book chapter</p>
+                                <div class="resource-links"><a href="https://books.google.com/books?hl=en&lr=&id=JgKEEAAAQBAJ&oi=fnd&pg=PA27" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Media Technologies and Digitally Mediated Reality</h4>
+                                <p class="source-label">ResearchGate (peer-reviewed publication)</p>
+                                <div class="resource-links"><a href="https://www.researchgate.net/publication/361240999_Media_Technologies_and_Digitally_Mediated_Reality_A_Study_on_Emerging_Trends_in_Content_Development_and_Manipulation_in_News_Media_Communication_and_Media_Studies" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A Multidimensional Approach for Evaluating Reality in Social Media</h4>
+                                <p class="source-label">JMIR (Journal of Medical Internet Research)</p>
+                                <div class="resource-links"><a href="https://www.jmir.org/2024/1/e52058" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Arguing for Media Psychology as a Distinct Field</h4>
+                                <p class="source-label">Google Books — academic book chapter</p>
+                                <div class="resource-links"><a href="https://books.google.com/books?hl=en&lr=&id=NB7YNxOVRjgC&oi=fnd&pg=PA43" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Digital Visions: The Experience of Self and Others in the Digital Revolution</h4>
+                                <p class="source-label">International Journal of Psychiatry in Clinical Practice (Taylor & Francis)</p>
+                                <div class="resource-links"><a href="https://www.tandfonline.com/doi/full/10.1080/09540261.2024.2355281#abstract" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A Virtual Life: How Social Media Changes Our Perceptions</h4>
+                                <p class="source-label">The Chicago School Insight (institutional magazine)</p>
+                                <div class="resource-links"><a href="https://www.thechicagoschool.edu/insight/from-the-magazine/a-virtual-life/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Google Pixel 9's AI Camera Features Let You Reshape Reality</h4>
+                                <p class="source-label">Wired</p>
+                                <div class="resource-links"><a href="https://www.wired.com/story/all-the-new-generative-ai-camera-features-in-google-pixel-9-phones/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Study Finds Consumers Are Actively Turned Off by Products That Use AI</h4>
+                                <p class="source-label">Futurism</p>
+                                <div class="resource-links"><a href="https://futurism.com/the-byte/study-consumers-turned-off-products-ai" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Skechers Refuses to Comment on Ad With Signs of Lazy AI</h4>
+                                <p class="source-label">Futurism</p>
+                                <div class="resource-links"><a href="https://futurism.com/the-byte/skechers-ad-signs-lazy-ai" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The CIA Is Quietly Using AI to Build Emulated Versions of World Leaders</h4>
+                                <p class="source-label">Futurism</p>
+                                <div class="resource-links"><a href="https://futurism.com/the-byte/cia-ai-chatbots-leaders" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== CONCEPTUAL THEMES ===================== -->
+            <div class="conceptual-section" id="conceptual">
+                <h2><span>🧠</span> Conceptual Themes in XR</h2>
+                <div class="description">
+                    Deep philosophical, experiential, and theoretical ideas that underpin VR, AR, and MR. These themes span phenomenology, identity theory, ethics, cognitive science, and cultural criticism — organized by the conceptual territory they explore.
+                </div>
+
+                <!-- THEME 1: Reality & Simulation -->
+                <div class="subsection articles-subsection">
+                    <h3>🪞 Reality & Simulation</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Why Is Virtual Reality Interesting for Philosophers?</h4>
+                                <p class="source-label">Thomas Metzinger — Frontiers in Robotics and AI (2018)</p>
+                                <p>Proposes VR as a tool for philosophy of mind, including the idea of setting a "level of realness" from hyperreal to depersonalized states to study consciousness itself.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2018.00101/full" target="_blank">Read Article →</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7805639/" target="_blank">PMC Version →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Phenomenon of Presence in VR Is Mistakenly Equated with Immersion</h4>
+                                <p class="source-label">PRESENCE: Virtual and Augmented Reality, MIT Press (2023)</p>
+                                <p>Argues that "true presence" occurs when sensory data supports only one interpretation — that the user is elsewhere — and that conflating this with immersion damages empirical research.</p>
+                                <div class="resource-links"><a href="https://direct.mit.edu/pvar/article/doi/10.1162/pres_a_00404/119256/The-Phenomenon-of-Presence-in-Virtual-Reality-Is" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Being There but Where? Sense of Presence Theory for VR Applications</h4>
+                                <p class="source-label">Humanities and Social Sciences Communications / Nature (2025)</p>
+                                <p>Argues presence is primarily a psychological — not technological — phenomenon shaped by narrative, individual characteristics, and intentional structures.</p>
+                                <div class="resource-links"><a href="https://www.nature.com/articles/s41599-025-04380-3" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A Postphenomenological Framework for Studying User Experience in Immersive VR</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2021)</p>
+                                <p>Applies postphenomenology to VR, asking not just what users experience but who they become and what the world becomes for them through the mediated interaction.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/articles/10.3389/frvir.2021.656423/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Enacting Virtual Reality: The Philosophy and Cognitive Science of Optimal Virtual Experience</h4>
+                                <p class="source-label">Springer (2019)</p>
+                                <p>Challenges the dominant VR design goal of maximizing "presence" and proposes instead that flow states through embodied engagement should be the real target.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/chapter/10.1007/978-3-030-22419-6_17" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Phenomenology of Virtual Reality and Phantom Sensations</h4>
+                                <p class="source-label">Philosophia (2010)</p>
+                                <p>Argues phantom limb sensation is "unmediated VR" — experienced as undeniably real in a way technologically induced VR is not — introducing "superpresence" vs. "telepresence."</p>
+                                <div class="resource-links"><a href="https://www.researchgate.net/publication/274960842_THE_PHENOMENOLOGY_OF_VIRTUAL_REALITY_AND_PHANTOM_SENSATIONS" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Virtual and the Real</h4>
+                                <p class="source-label">David J. Chalmers — preprint/working paper</p>
+                                <p>Philosophical paper arguing virtual objects and experiences are genuinely real — not illusory — and that users correctly perceive virtual space as a distinct kind of space.</p>
+                                <div class="resource-links"><a href="https://consc.net/papers/virtual.pdf" target="_blank">Read Paper →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 2: Identity & Self -->
+                <div class="subsection articles-subsection">
+                    <h3>🧍 Identity & Self / The Proteus Effect</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A Theoretical Review of the Proteus Effect: Understanding the Underlying Processes</h4>
+                                <p class="source-label">Frontiers in Psychology (2024)</p>
+                                <p>Reviews competing explanations for how avatar embodiment shapes behavior — self-perception theory, deindividuation, and priming — finding the research genuinely inconsistent.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1379599/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>A New Meta-Analysis of the Proteus Effect: Studies in VR Find Stronger Effect Sizes</h4>
+                                <p class="source-label">PRESENCE: Virtual and Augmented Reality, MIT Press (2022)</p>
+                                <p>Meta-analysis of 56 studies finding head-mounted VR produces significantly stronger behavioral effects than flat-screen avatars.</p>
+                                <div class="resource-links"><a href="https://direct.mit.edu/pvar/article/doi/10.1162/pres_a_00392/116650/A-New-Meta-Analysis-of-the-Proteus-Effect-Studies" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Body, Avatar, and Me: The Presentation and Perception of Self in Social VR</h4>
+                                <p class="source-label">ACM CSCW (2020)</p>
+                                <p>Finds social VR enables radically different self-presentation strategies and serves as a meaningful space for gender identity exploration.</p>
+                                <div class="resource-links"><a href="https://guof.people.clemson.edu/papers/body.pdf" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Does the Avatar Embodiment Moderate the Proteus Effect?</h4>
+                                <p class="source-label">ScienceDirect (2024)</p>
+                                <p>Two VR studies finding no significant moderation of the Proteus effect by embodiment level — challenging the popular assumption that more immersive avatars always produce stronger behavioral change.</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/pii/S1071581924000569" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Narrative Self-Recreation in Virtual Reality</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2022)</p>
+                                <p>Proposes VR as a therapeutic medium for trauma processing, specifically because interactivity allows users to regain agency and potentially shift the narrative they tell about their own life.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2022.854333/full" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Proteus Effect and How Your Avatar Shapes You</h4>
+                                <p class="source-label">VIVERSE Blog (2025)</p>
+                                <p>Cultural essay arguing that virtual avatars are as socially significant as offline roles, and that the fusion of virtual and real selves will only deepen.</p>
+                                <div class="resource-links"><a href="https://news.viverse.com/post/how-does-your-avatar-shape-you-discussing-the-proteus-effect-and-the-impact-of-digital-identities-o" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 3: Time & Temporality -->
+                <div class="subsection articles-subsection">
+                    <h3>⏳ Time & Temporality</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Quantifying Time Perception During VR Gameplay Using a Multimodal Biosensor-Instrumented Headset</h4>
+                                <p class="source-label">Frontiers in Neuroergonomics (2023)</p>
+                                <p>Uses EEG, ECG, and eye tracking to show gamers experience significant time distortion in VR, with physiological signals predicting subjective time perception ratings.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/neuroergonomics/articles/10.3389/fnrgo.2023.1189179/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Brain Signatures of Time Perception in Virtual Reality</h4>
+                                <p class="source-label">IEEE Transactions on Visualization and Computer Graphics (2025)</p>
+                                <p>Identifies EEG spectral signatures for over/underestimation of time in VR, opening the door to real-time adaptive environments that modulate temporal experience.</p>
+                                <div class="resource-links"><a href="https://arxiv.org/html/2504.08056v1" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Movement-Contingent Time Flow in Virtual Reality Causes Temporal Recalibration</h4>
+                                <p class="source-label">Scientific Reports (2019)</p>
+                                <p>Demonstrates that coupling bodily movement to time flow in VR causes lasting recalibration of time perception, with interval underestimation persisting after VR sessions.</p>
+                                <div class="resource-links"><a href="https://www.nature.com/articles/s41598-019-40870-6" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Time Perception in Naturalistic and Urban Immersive VR Environments</h4>
+                                <p class="source-label">ScienceDirect (2023)</p>
+                                <p>Finds natural VR environments produce more accurate and less variable time perception than urban environments, suggesting emotional valence directly modulates temporal cognition.</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/pii/S0272494423001536" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Validating Virtual Reality for Time Perception Research</h4>
+                                <p class="source-label">PMC (2024)</p>
+                                <p>Finds immersive VR alters judgments about the duration of physical processes but not abstract time units — an important methodological finding for VR time research.</p>
+                                <div class="resource-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11289030/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Object Motion Manipulation and Time Perception in Virtual Reality</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2024)</p>
+                                <p>Examines how motion properties of virtual objects and embodiment levels interact to shape subjective temporal experience, finding irregular motion extends perceived time.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2024.1390703/full" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 4: Agency & Control -->
+                <div class="subsection articles-subsection">
+                    <h3>🤲 Agency & Control / Narrative</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Exploring the Viewer's Role in Narrative-Based Animated VR Experiences</h4>
+                                <p class="source-label">Sage Journals (2024)</p>
+                                <p>Identifies six strategies for activating viewer agency in animated VR — including interaction, virtual body integration, and directed viewing — finding genuine agency enhances immersion.</p>
+                                <div class="resource-links"><a href="https://journals.sagepub.com/doi/10.1177/17468477241281635" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Perspective: Narrative Storyliving in Virtual Reality Design</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2022)</p>
+                                <p>Distinguishes "storytelling" from "storyliving" in VR — where participants become authors of their own story rather than recipients of a pre-scripted one.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2022.779148/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Mapping the Viewer Experience in Cinematic Virtual Reality: A Systematic Review</h4>
+                                <p class="source-label">PRESENCE, MIT Press (2023)</p>
+                                <p>Identifies four key research areas in cinematic VR — medium adaptation, attention guidance, spatial cognition, and storytelling — finding CVR heightens presence but challenges narrative comprehension.</p>
+                                <div class="resource-links"><a href="https://direct.mit.edu/pvar/article/doi/10.1162/pres_a_00409/119835/Mapping-the-Viewer-Experience-in-Cinematic-Virtual" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Immersive Storytelling Experiences: A Design Methodology</h4>
+                                <p class="source-label">Taylor & Francis (2024)</p>
+                                <p>Explores mixed-reality narrative design, including a case study where participants are kept unaware they are "in the story" until a shocking event forces the realization.</p>
+                                <div class="resource-links"><a href="https://www.tandfonline.com/doi/full/10.1080/14626268.2024.2389886" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Designing Immersive Stories with Novice VR Creators: Autobiographical VR Storytelling</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2023)</p>
+                                <p>Examines how immersive VR can authentically share autobiographical stories — and highlights the risk that a designer's choices may misrepresent a protagonist's actual lived experience.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2023.1174701/full" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 5: Place & Space / Hybridity -->
+                <div class="subsection articles-subsection">
+                    <h3>🌐 Place & Space / Blending & Hybridity</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>(Semi-)Immersive Digital Placemaking: A Systematic Review of AR, VR, and MR Applications</h4>
+                                <p class="source-label">Sage Journals (2025)</p>
+                                <p>Finds AR excels at active urban exploration, VR at co-design simulations, and MR at bridging virtual and on-site participants — each producing a distinct form of place-making.</p>
+                                <div class="resource-links"><a href="https://journals.sagepub.com/doi/10.1177/13548565251372796" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Investigating the Design of Augmented Narrative Spaces Through Virtual-Real Connections</h4>
+                                <p class="source-label">ACM CHI (2024)</p>
+                                <p>Identifies eight types of augmented narrative spaces based on whether the virtual layer narrativizes reality, or reality provides a backdrop for a virtual narrative.</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.1145/3613904.3642819" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Augmented Reality Interventions in Shared Space: Subversion and Social Impact</h4>
+                                <p class="source-label">Springer — Augmented Reality Art (2022)</p>
+                                <p>Discusses how AR interventions in physical spaces can highlight unseen social issues and prompt social change within local communities.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/chapter/10.1007/978-3-030-96863-2_11" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Digital Dualism versus Augmented Reality</h4>
+                                <p class="source-label">Nathan Jurgenson — Cyborgology (2011)</p>
+                                <p>Widely-cited cultural theory essay arguing digital and physical are not separate spheres but a single entangled "augmented reality" — that we live one life, not two.</p>
+                                <div class="resource-links"><a href="https://thesocietypages.org/cyborgology/2011/02/24/digital-dualism-versus-augmented-reality/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 6: Empathy & Perspective-Taking -->
+                <div class="subsection articles-subsection">
+                    <h3>🌱 Empathy & Perspective-Taking</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Virtual Reality and Empathy Enhancement: Ethical Aspects</h4>
+                                <p class="source-label">Frontiers in Robotics and AI (2020)</p>
+                                <p>Critically examines VR as an "empathy machine" — finding most activist VR projects lack evidence for sustained prosocial change, and that empathy itself requires ethical scrutiny as a moral goal.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2020.506984/full" target="_blank">Read Article →</a><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7805945/" target="_blank">PMC Version →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Mediating Role of Technology Affordances in VR Perspective-Taking</h4>
+                                <p class="source-label">Virtual Reality, Springer (2025)</p>
+                                <p>Systematic review of 66 studies finding immersion, presence, and embodiment each play distinct roles in generating prosocial outcomes in VR.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/article/10.1007/s10055-024-01095-9" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Ethical Concerns in Contemporary VR and Frameworks for Responsible Use</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2025)</p>
+                                <p>Surveys VR ethics across consent, privacy, and harm — reviewing IRB frameworks, care ethics, and co-created ethical codes as potential guides for responsible use.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2025.1451273/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Virtual Reality, Empathy and Ethics (Book)</h4>
+                                <p class="source-label">Matthew Cotton — Springer (2021)</p>
+                                <p>Full book critically assessing VR for empathy and pro-social behavior, proposing VR as "dramatic rehearsal" in the tradition of John Dewey — a space for moral imagination and choice architecture.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/book/10.1007/978-3-030-72907-3" target="_blank">Read Book →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 7: Power, Surveillance & Ethics -->
+                <div class="subsection articles-subsection">
+                    <h3>⚖️ Power, Surveillance & Ethics</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Ethics in the Metaverse (Editorial)</h4>
+                                <p class="source-label">Frontiers in Virtual Reality (2025)</p>
+                                <p>Covers consent challenges, unauthorized surveillance, and the risk that AI and blockchain reliance may erode human creative problem-solving in virtual environments.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/virtual-reality/articles/10.3389/frvir.2025.1576244/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Replika in the Metaverse: The Moral Problem with Empathy in 'It from Bit'</h4>
+                                <p class="source-label">AI and Ethics, Springer (2022)</p>
+                                <p>Examines computational empathy in social chatbots for mixed reality, engaging Chalmers' virtual realism and Bostrom's simulation hypothesis — finding computational empathy lacks a moral dimension.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/article/10.1007/s43681-022-00252-7" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Public Perceptions on Psychological and Social Impacts of VR and AR</h4>
+                                <p class="source-label">ACM Mensch und Computer (2025)</p>
+                                <p>Survey finding XR technologies are widely understood to blur the lines between physical and virtual reality, with participants expressing concerns about data collection and surveillance anxiety.</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.1145/3743049.3743079" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Metaverse Technologies and Human Behavior: Insights into Engagement, Adoption, and Ethical Challenges</h4>
+                                <p class="source-label">ScienceDirect (2025)</p>
+                                <p>Uses BERTopic modeling across a large literature to identify seven thematic building blocks — including behavioral/ethical dimensions, VR therapy, and cognitive effects in virtual environments.</p>
+                                <div class="resource-links"><a href="https://www.sciencedirect.com/science/article/pii/S2451958825001277" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 8: Death, Absence & Memory -->
+                <div class="subsection articles-subsection">
+                    <h3>💀 Death, Absence & Memory</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Grief and Virtual Reality: Continuing Bonds with Virtual Avatars</h4>
+                                <p class="source-label">Phenomenology and the Cognitive Sciences, Springer (2025)</p>
+                                <p>Argues VR enables uniquely embodied, multisensory interaction with simulations of the deceased — with therapeutic promise in clinical contexts but risk of reinforcing denial in unregulated use.</p>
+                                <div class="resource-links"><a href="https://link.springer.com/article/10.1007/s11097-025-10072-9" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Grieving in Virtual Worlds: Emotional Processes and Generational Differences in Avatar-Based Memorials on VRChat</h4>
+                                <p class="source-label">Frontiers in Psychology (2025)</p>
+                                <p>Examines how VR grief communities maintain continuing bonds through avatars and memorial worlds, finding that virtual acceptance represents ongoing relationship rather than closure.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1669020/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Role of Death Technologies in Grief: An Interdisciplinary Examination</h4>
+                                <p class="source-label">Frontiers in Human Dynamics (2025)</p>
+                                <p>Surveys griefbots, deadbots, and VR simulations — finding advanced simulations risk delaying acceptance of loss and fostering emotional dependency that challenges natural grieving.</p>
+                                <div class="resource-links"><a href="https://www.frontiersin.org/journals/human-dynamics/articles/10.3389/fhumd.2025.1582914/full" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>From Virtual to Real Healing: A Critical Overview of the Therapeutic Use of VR in Mourning</h4>
+                                <p class="source-label">PMC (2021)</p>
+                                <p>Reviews VR grief therapy applications, including the South Korean documentary of a mother interacting with an avatar of her deceased daughter — situating this within clinical bereavement literature.</p>
+                                <div class="resource-links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8376294/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Remember You: Understanding How Users Use Deadbots to Reconstruct Memories of the Deceased</h4>
+                                <p class="source-label">ACM CHI Extended Abstracts (2026)</p>
+                                <p>Studies how bereaved users interact with AI chatbots trained on a deceased person's digital footprint, examining memory reconstruction, emotional dependency, and consent.</p>
+                                <div class="resource-links"><a href="https://arxiv.org/html/2603.01017" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>The Digital Afterlife: A Cure for Grief?</h4>
+                                <p class="source-label">IE University (2025)</p>
+                                <p>Journalistic essay on the digital afterlife industry — noting that ethicists warn digital avatars could act like a painkiller preventing grief processing, and that digital immortality is becoming a luxury good.</p>
+                                <div class="resource-links"><a href="https://www.ie.edu/uncover-ie/digital-afterlife-ie-school-of-science-and-technology/" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THEME 9: Performance & Spectatorship -->
+                <div class="subsection articles-subsection">
+                    <h3>🎭 Performance & Spectatorship</h3>
+                    <div class="review-tier tier-peer-reviewed">
+                        <div class="review-tier-header">✔ Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Process, Roles, Tools, and Team: Understanding the Emerging Medium of VR Theatre</h4>
+                                <p class="source-label">ACM CHI (2024)</p>
+                                <p>First paper to analyze VR theatre from the perspective of creative and production process — finding the key dramaturgical question is what role to assign the audience: witness, participant, or something between.</p>
+                                <div class="resource-links"><a href="https://dl.acm.org/doi/10.1145/3613904.3642741" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Research of Immersive Theatre from Audience Perspective</h4>
+                                <p class="source-label">ResearchGate (2025)</p>
+                                <p>Examines how audiences in Punchdrunk's productions claim agency through their gaze — functioning as living cameras — while masks create anonymity that simultaneously connects and isolates audience members.</p>
+                                <div class="resource-links"><a href="https://www.researchgate.net/publication/389256691_Research_of_Immersive_Theatre_from_Audience_Perspective" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-tier tier-not-peer-reviewed">
+                        <div class="review-tier-header">✗ Not Peer Reviewed</div>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>Theatricalizing the Metaverse Through VR</h4>
+                                <p class="source-label">The Writing Platform (2022)</p>
+                                <p>Practitioner essay by a theatre scholar-performer on inhabiting a digital body in live VR performance — describing avatar anthropomorphism as something closer to "demonic possession" than costume.</p>
+                                <div class="resource-links"><a href="https://thewritingplatform.com/2022/03/theatricalizing-the-metaverse-through-vr/" target="_blank">Read Article →</a></div>
+                            </div>
+                            <div class="resource-card">
+                                <span class="type-badge badge-article">Article</span>
+                                <h4>How VR and AR Are Changing the World of Immersive Theatre</h4>
+                                <p class="source-label">Arts Management and Technology Lab (2022)</p>
+                                <p>Argues immersive theatre's defining feature — eliminating distance between actor and audience — is taken further by VR, which makes the audience's perceptual environment identical to the performer's.</p>
+                                <div class="resource-links"><a href="https://amt-lab.org/blog/2021/8/how-vr-and-ar-are-changing-the-world-of-immersive-theater" target="_blank">Read Article →</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Conceptual Themes -->
+
+        </div>
+
+        <footer>
+            <p>🌐 Reality Technologies Resource Collection — Organized by Technology Type & Conceptual Theme</p>
+            <p>A comprehensive guide to VR, AR, MR, Video Games, Simulations & Immersive Experiences</p>
+            <p style="margin-top: 15px; font-size: 0.85em; opacity: 0.5;">Created February 2026 · Updated March 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
